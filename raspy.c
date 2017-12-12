@@ -1,10 +1,14 @@
 #include <wiringPi.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
 #include "blinking_led.h"
 #include "btn_input.h"
 #include "buzzer.h"
 #include "ultra_sound.h"
 #include "reverse_sensor.h"
+#include "humidity.h"
 
 int setupWiringPi();
 void showSampleMenu();
@@ -28,7 +32,8 @@ void showSampleMenu(){
 	printf("2 - Get button input [Connection PIN 8] \n");
 	printf("3 - Ring Buzzer [Anode PIN 8] \n");
 	printf("4 - Ultra sound distance detector [VCC PIN 5V, Trig PIN 7, Echo PIN 0] \n");
-	printf("5 - Reverse Sensor [VCC PIN 5V, Trig PIN 7, Echo PIN 0, Buzzor Anode 8] \n\n");
+	printf("5 - Reverse Sensor [VCC PIN 5V, Trig PIN 7, Echo PIN 0, Buzzor Anode 8] \n");
+	printf("6 - Humidity Sensor [VCC PIN 5V, Trig PIN 7] \n\n");
 
 	printf("Enter the choice index :");
 	scanf("%d", &choice);
@@ -54,6 +59,9 @@ void triggureAction(int *choice){
 		break;
 		case 5:
 			reverse();
+		break;
+		case 6:
+			readHumidity();
 		break;
 	}
 }
