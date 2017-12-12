@@ -1,21 +1,24 @@
 #define TRIG 7
 #define ECHO 0
-#define BUZZ 2
+#define BUZZ 8
 
 void reverse();
-static void arrange();
-static int getCm();
+void reverseArrange();
+int reverseGetCm();
 void ringBuzzer();
+void reverseAlert(int distance);
 
 void reverse(){
-	arrange();
+	reverseArrange();
     while(1){
         delay(500);
+        int distance = getCm();
+        reverseAlert(distance);
         printf("Distance %dcm\n", getCm());
     }
 }
 
-void arrange(){
+void reverseArrange(){
 	pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
     pinMode(BUZZ, OUTPUT);  
@@ -24,7 +27,7 @@ void arrange(){
     delay(30);
 }
 
-int getCm(){
+int reverseGetCm(){
     digitalWrite(TRIG, HIGH);
     delayMicroseconds(20);
     digitalWrite(TRIG, LOW);
@@ -37,18 +40,20 @@ int getCm(){
 
     int distance = travelTime/58;
 
-    if(distance > 15){
-            ringBuzzer();
-    }else{
-            digitalWrite(BUZZ, LOW);
-    }
-
     return distance;
 }
 
 void ringBuzzer(){
-    delay(2000);
+    delay(10);
     digitalWrite(BUZZ, HIGH);
-    delay(500);
+    delay(200);
     digitalWrite(BUZZ, LOW);
+}
+
+void reverseAlert(int distance){
+    if(distance < 100){
+        ringBuzzer();
+    }else{
+        digitalWrite(BUZZ, LOW);
+    }
 }

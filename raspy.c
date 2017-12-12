@@ -4,7 +4,7 @@
 #include "btn_input.h"
 #include "buzzer.h"
 #include "ultra_sound.h"
-// #include "reverse_sensor.h"
+#include "reverse_sensor.h"
 
 int setupWiringPi();
 void showSampleMenu();
@@ -53,7 +53,7 @@ void triggureAction(int *choice){
 			getDistance();
 		break;
 		case 5:
-			// reverse();
+			reverse();
 		break;
 	}
 }
