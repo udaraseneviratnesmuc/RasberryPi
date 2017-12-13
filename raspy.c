@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "sensor_modules/blinking_led.h"
 #include "sensor_modules/btn_input.h"
@@ -66,7 +67,7 @@ void triggureAction(int *choice){
 			readHumidity();
 		break;
 		case 7:
-			doBroadcast("Hello World");
+			doBroadcast();
 		break;
 	}
 }

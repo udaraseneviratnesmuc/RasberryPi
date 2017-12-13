@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include <errno.h>
-#include <string.h>
 #include <time.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -22,7 +21,7 @@ extern int mkaddr(
 
 #define MAXQ 4
 
-void doBroadcast(char *msg);
+void doBroadcast();
  
 /*
 * This function reports the error and
@@ -37,7 +36,7 @@ displayError(const char *on_what) {
   exit(1);
 }
 
-void doBroadcast(char *msg) {
+void doBroadcast() {
   int z;      /* Status return code */
   int s;      /* Socket */
   struct sockaddr_in adr_srvr;/* AF_INET */
@@ -121,9 +120,11 @@ void doBroadcast(char *msg) {
 
 	  // char * msg = "Hi I am Udara";
   	char buffer[256];
-  	printf("Please enter the message :\n");
-	bzero(buffer, 256);
-	fgets(buffer,255,stdin);
+  	// printf("Please enter the message :\n");
+    // readHumidity();
+	// bzero(buffer, 256);
+	// fgets(buffer,255,stdin);
+    strcpy(buffer, read_dht11_dat());
 
 	  z = sendto(s,
 				 buffer,
