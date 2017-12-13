@@ -9,6 +9,7 @@
 #include "sensor_modules/ultra_sound.h"
 #include "sensor_modules/reverse_sensor.h"
 #include "sensor_modules/humidity.h"
+#include "broadcasting_module/udp_broadcast_svr.h"
 
 int setupWiringPi();
 void showSampleMenu();
@@ -33,7 +34,8 @@ void showSampleMenu(){
 	printf("3 - Ring Buzzer [Anode PIN 8] \n");
 	printf("4 - Ultra sound distance detector [VCC PIN 5V, Trig PIN 7, Echo PIN 0] \n");
 	printf("5 - Reverse Sensor [VCC PIN 5V, Trig PIN 7, Echo PIN 0, Buzzor Anode 8] \n");
-	printf("6 - Humidity Sensor [VCC PIN 5V, Trig PIN 7] \n\n");
+	printf("6 - Humidity Sensor [VCC PIN 5V, Trig PIN 7] \n");
+	printf("7 - Start signal broadcasting \n\n");
 
 	printf("Enter the choice index :");
 	scanf("%d", &choice);
@@ -62,6 +64,9 @@ void triggureAction(int *choice){
 		break;
 		case 6:
 			readHumidity();
+		break;
+		case 7:
+			doBroadcast("Hello World");
 		break;
 	}
 }
