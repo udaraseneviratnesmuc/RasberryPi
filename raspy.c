@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#include "blinking_led.h"
-#include "btn_input.h"
-#include "buzzer.h"
-#include "ultra_sound.h"
-#include "reverse_sensor.h"
-#include "humidity.h"
+#include "sensor_modules/blinking_led.h"
+#include "sensor_modules/btn_input.h"
+#include "sensor_modules/buzzer.h"
+#include "sensor_modules/ultra_sound.h"
+#include "sensor_modules/reverse_sensor.h"
+#include "sensor_modules/humidity.h"
 
 int setupWiringPi();
 void showSampleMenu();
